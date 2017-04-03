@@ -4,17 +4,13 @@ lendingbot for bitfinex
 
 ## Install
 
-- Install [go](https://golang.org/dl/).
-- download this project.
-- install dependencies
-  - run `go get github.com/eAndrius/bitfinex-go`
-  - run `go get github.com/spf13/viper`
-- compile
-  - run `go build`
+- Download the [latest release](https://github.com/askmike/bitfinex-auto-lender/releases) for your OS.
+- Copy this [config file](https://raw.githubusercontent.com/askmike/bitfinex-auto-lender/master/config.toml) into the same directory.
 
 ## Usage
 
-- Configure `config.toml` to your needs.
-- run `./bitfinex-auto-lender`
+- Configure `config.toml` to suit your needs.
+- Run
+- Profit!
 
 
