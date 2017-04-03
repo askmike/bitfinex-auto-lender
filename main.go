@@ -57,38 +57,29 @@ func lend() {
 
   cancelOrders()
 
-  log.Print("Checking balance..")
   balance, err := getBalance()
   if err != nil {
     return
   }
 
   if balance == 0 {
-    log.Print("Empty balance, skipping.")
     return
   }
 
-  log.Print("Balance: ", balance)
-
-  log.Print("Checking minimum..")
   minimum, err := getMinimum()
   if err != nil {
     return
   }
-  log.Print("Minumum: ", minimum)
 
   if(balance < minimum) {
-    log.Print("Balance lower than minimum lending amount, skipping.") 
     return
   }
   
-  log.Print("Checking best rate offered..")
   topAsk, err := getTopAsk();
   if err != nil {
     return
   }
 
-  log.Print("Best rate: ", topAsk)
   log.Print("Creating offer: ", balance, "@", topAsk/365, " (", C.LendDays, " days)")
 
   if C.Live == false {
