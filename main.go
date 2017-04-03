@@ -8,7 +8,6 @@ import (
   "github.com/spf13/viper"
 )
 
-
 type config struct {
   Live bool
   CheckEvery float64
@@ -21,8 +20,11 @@ type config struct {
 
 var C config
 var api *bitfinex.API
+var VERSION string
 
 func main() {
+
+  VERSION = "0.0.1"
 
   viper.SetConfigName("config")
   viper.AddConfigPath(".")
@@ -33,7 +35,22 @@ func main() {
     log.Println("unable to decode into struct, %v", err)
   }
 
+  if C.ApiKey == "your key" {
+    log.Println("Please set your API keys in the config.toml file")
+    return
+  }
+
   api = bitfinex.New(C.ApiKey, C.ApiSecret)
+
+  _, err = getBalance()
+  if err != nil {
+    log.Println("Could not connect to bitfinex..")
+    log.Println(err)
+    return
+  }
+
+  log.Println("Lending bot started!", "v" + VERSION)
+
   t := time.NewTicker(time.Minute * time.Duration(C.CheckEvery))
   for {
       lend()
