@@ -6,5 +6,5 @@ lendDays = 2
 minimumUSD = 50
 currency = "btc"
 
-apiKey = "drNHZjuNB6qLKhjjg82RhiKWEb51sb215lJohy701VC"
-apiSecret = "2tvCboMzU6Rug7UgyvQxXkZTTgSezkH78tfJd9mcfGi"
+apiKey = "your key"
+apiSecret = "your secret"
