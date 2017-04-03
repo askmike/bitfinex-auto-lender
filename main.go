@@ -87,20 +87,24 @@ func lend() {
   if err != nil {
     return
   }
+
   log.Print("Best rate: ", topAsk)
-  log.Print("Creating offer: ", balance, "@", topAsk, " (", C.LendDays, " days)")
+  log.Print("Creating offer: ", balance, "@", topAsk/365, " (", C.LendDays, " days)")
 
   if C.Live == false {
     log.Println("Not live, not placing offer.")
     return
   }
 
-  _, err = api.NewOffer(strings.ToUpper(C.Currency), balance, topAsk, C.LendDays, "loan")
+  _, err = api.NewOffer(strings.ToUpper(C.Currency), balance, topAsk, C.LendDays, "lend")
   if err != nil {
     log.Println("Failed to place new offer: " + err.Error())
   }
 }
 
+
+
+// helpers
 
 func getMinimum() (float64, error) {
   if(C.Currency == "usd") {
@@ -137,7 +141,7 @@ func getTopAsk() (float64, error) {
     return 0, err 
   }
 
-  topAsk := lendbook.Asks[0].Rate / 365
+  topAsk := lendbook.Asks[0].Rate
 
   return topAsk, nil
 }
