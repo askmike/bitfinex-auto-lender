@@ -95,7 +95,7 @@ func lend() {
     return
   }
 
-  _, err = api.NewOffer(strings.ToUpper(C.Currency), balance, topAsk, C.LendDays, bitfinex.LOAN)
+  _, err = api.NewOffer(strings.ToUpper(C.Currency), balance, topAsk, C.LendDays, "loan")
   if err != nil {
     log.Println("Failed to place new offer: " + err.Error())
   }
