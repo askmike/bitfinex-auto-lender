@@ -24,3 +24,5 @@ _testmain.go
 *.prof
 
 bitfinex-auto-lender
+
+.DS_Store
